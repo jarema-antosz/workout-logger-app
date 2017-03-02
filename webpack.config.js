@@ -1,5 +1,7 @@
 const path = require('path');
+var webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
@@ -14,6 +16,7 @@ module.exports = {
   // Entries have to resolve to files! It relies on Node.js
   // convention by default so if a directory contains *index.js*,
   // it will resolve to that.
+  devtool: 'inline-source-map',
   entry: {
     app: PATHS.app
   },
@@ -23,12 +26,14 @@ module.exports = {
   },
     module: {
         loaders: [
-			{ test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
-		]
+			       { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader" }
+		  ]
     },
-  plugins: [
+   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Workout Logger App'
-    })
+      title: 'Workout Logger App',
+      template: __dirname + '/app/index.html'
+    }),
+    new webpack.NoErrorsPlugin()
   ]
 };
