@@ -1,3 +1,11 @@
-import component from './component';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import MainComponent from './components/main';
 
-document.body.appendChild(component());
+
+if(typeof window !== 'undefined') {
+  ReactDOM.render(
+     <MainComponent />,
+     document.getElementById('container')
+  );
+}
