@@ -1,11 +1,13 @@
 {
   "name": "workout-logger-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sample App to learn React",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "start": "webpack-dev-server --env development --display-error-details",
-    "build": "webpack --env production"
+    "build": "webpack --env production",
+    "test": "echo \"test script\""
   },
   "keywords": [],
   "author": "Jarema Antosz",
