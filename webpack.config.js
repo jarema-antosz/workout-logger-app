@@ -33,7 +33,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Workout Logger App',
       template: __dirname + '/app/templates/index.html'
-    }),
-    new webpack.NoErrorsPlugin()
+    })
   ]
 };
