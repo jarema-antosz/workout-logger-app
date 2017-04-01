@@ -32,7 +32,7 @@ module.exports = {
     },
    plugins: [
     new HtmlWebpackPlugin({
-      title: 'Workout Logger App',
+      title: 'Workout Logger App',// use <%= htmlWebpackPlugin.options.title %> to inject this in page template
       template: PATHS.page_template
     }),
     new webpack.HotModuleReplacementPlugin() //auto refresh app in browser after file save but state is not loss, requires react-hmre
