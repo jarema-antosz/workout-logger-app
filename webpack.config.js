@@ -5,7 +5,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'build')
+  build: path.join(__dirname, 'build'),
+  page_template: path.join(__dirname, '/app/templates/index.html')
 };
 
 module.exports = {
@@ -32,7 +33,8 @@ module.exports = {
    plugins: [
     new HtmlWebpackPlugin({
       title: 'Workout Logger App',
-      template: __dirname + '/app/templates/index.html'
-    })
+      template: PATHS.page_template
+    }),
+    new webpack.HotModuleReplacementPlugin() //auto refresh app in browser after file save but state is not loss, requires react-hmre
   ]
 };
