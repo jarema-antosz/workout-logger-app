@@ -19,7 +19,7 @@ module.exports = {
   // it will resolve to that.
   devtool: 'inline-source-map',
   entry: {
-    app: PATHS.app
+    app: ["babel-polyfill", PATHS.app]
   },
   output: {
     path: PATHS.build,

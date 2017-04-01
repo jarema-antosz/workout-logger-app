@@ -1,5 +1,6 @@
 import React from 'react';
 import Trainings from './trainings';
+import "isomorphic-fetch";
 
 var trainings = [
                     // {id: '1',
