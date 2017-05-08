@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MainComponent from './components/main';
+import App from './app';
+
+
 
 
 if(typeof window !== 'undefined') {
   ReactDOM.render(
-     <MainComponent />,
+    <div><App></App></div>,
      document.getElementById('container')
   );
 }

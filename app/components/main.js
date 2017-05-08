@@ -1,17 +1,13 @@
 import React from 'react';
 import Trainings from './trainings';
-import "isomorphic-fetch";
+import NoDataInfo from './noData';
 
-var trainings = [
-                    // {id: '1',
-                    //   date: '2017-01-01',
-                    //   exercises: [ {name: "pushups", reps: "30"}, { name: "pullups", reps: "10"}]
-                    // },
-                    // {id: '2',
-                    //   date: '2017-01-02',
-                    //   exercises: [ {name: "pushups", reps: "50"}, { name: "situps", reps: "30"}]
-                    // }
-                    ];
+
+
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
+
+var trainings = [];
 
 class MainComponent extends React.Component {
   constructor() {
@@ -22,15 +18,13 @@ class MainComponent extends React.Component {
   render() {
     if(this.state.trainings.length != 0)
     return (
-      <div>Main Component Here
+      <div>
           <div><Trainings trainingList= {this.state.trainings} onDelete={this.deleteTraining}/></div>
       </div>
     );
     else
     return (
-      <div>Main Component Here
-          <div>No data</div>
-      </div>
+      <NoDataInfo />
     );
   }
 
