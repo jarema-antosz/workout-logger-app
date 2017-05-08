@@ -1,0 +1,20 @@
+{
+  "trainings" : [
+                    {"id": "1",
+                      "date": "2017-01-01",
+                      "exercises": [ {"name": "pushups", "reps": "30"}, { "name": "pullups", "reps": "10"}]
+                    },
+                    {"id": "2",
+                      "date": "2017-01-02",
+                      "exercises": [ {"name": "pushups", "reps": "40"}, { "name": "pullups", "reps": "5"}]
+                    },
+                    {"id": "3",
+                      "date": "2017-01-03",
+                      "exercises": [ {"name": "pushups", "reps": "40"}, { "name": "pullups", "reps": "10"}]
+                    },
+                    {"id": "4",
+                      "date": "2017-01-04",
+                      "exercises": [ {"name": "pushups", "reps": "20"}, { "name": "pullups", "reps": "10"}]
+                    }
+                ]
+}

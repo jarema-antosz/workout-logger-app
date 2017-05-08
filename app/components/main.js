@@ -30,6 +30,12 @@ class MainComponent extends React.Component {
 
   componentDidMount() {
     console.log("MainComponent mounted. Make ajax call");
+    this.fetchTrainingsFromApi();
+
+  }
+
+  fetchTrainingsFromApi() {
+    console.log("fetchTrainingsFromApi");
     fetch("http://localhost:3000/trainings").then((resp) => resp.json())
     .then((data) => {trainings= data; this.setState({trainings : trainings})})
     .catch(function(error) {
@@ -37,9 +43,17 @@ class MainComponent extends React.Component {
     });
   }
 
+  deleteTrainingApiCall(id) {
+    fetch("http://localhost:3000/trainings/" + id, {
+      method: 'DELETE',
+    }).then(resonse => this.fetchTrainingsFromApi()).catch(function(error) {
+      console.log(error);
+    });
+  }
+
   deleteTraining(training) {
-    trainings = trainings.filter( element => element.id !== training );
-    this.setState({trainings : trainings});
+    console.log("delete " + training);
+    this.deleteTrainingApiCall(training);
   }
 
 }
