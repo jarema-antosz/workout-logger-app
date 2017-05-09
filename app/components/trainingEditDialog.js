@@ -1,8 +1,9 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import DatePicker from 'material-ui/DatePicker';
 
-export default class TrainingEditDialog extends React.Component {
+class TrainingEditDialog extends React.Component {
   constructor(props) {
     super(props);
 
@@ -33,6 +34,16 @@ export default class TrainingEditDialog extends React.Component {
       />,
     ];
 
-    return (<Dialog title="Add/Edit Trainging" actions={actions} open={this.props.open}></Dialog>);
+    return (<Dialog title="Add/Edit Trainging" actions={actions} open={this.props.open}>
+            <DatePicker hintText="Training on..." />
+    </Dialog>);
   }
 }
+
+TrainingEditDialog.propTypes = {
+    handleCancel : React.PropTypes.func.isRequired,
+    handleSubmit : React.PropTypes.func.isRequired,
+    open: React.PropTypes.bool.isRequired
+}
+
+export default TrainingEditDialog;

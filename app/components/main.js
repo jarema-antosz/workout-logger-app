@@ -51,9 +51,9 @@ class MainComponent extends React.Component {
     });
   }
 
-  deleteTraining(training) {
-    console.log("delete " + training);
-    this.deleteTrainingApiCall(training);
+  deleteTraining(id) {
+    console.log("delete " + id);
+    this.deleteTrainingApiCall(id);
   }
 
 }

@@ -1,5 +1,5 @@
 {
-  "trainings" : [
+  "trainings": [
                     {"id": "1",
                       "date": "2017-01-01",
                       "exercises": [ {"name": "pushups", "reps": "30"}, { "name": "pullups", "reps": "10"}]
@@ -16,5 +16,16 @@
                       "date": "2017-01-04",
                       "exercises": [ {"name": "pushups", "reps": "20"}, { "name": "pullups", "reps": "10"}]
                     }
-                ]
+                ],
+  "exercises": [
+    {
+      "name": "pushups"
+    },
+    {
+      "name": "pullups"
+    },
+    {
+      "name": "situps"
+    }
+  ]
 }

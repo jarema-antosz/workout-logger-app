@@ -4,6 +4,11 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Header from './components/header';
 import TrainingEditDialog from './components/trainingEditDialog';
 
+import promise from 'es6-promise';
+import 'isomorphic-fetch';
+
+promise.polyfill();
+
 
 export default class App extends React.Component {
 
@@ -34,7 +39,9 @@ export default class App extends React.Component {
     return (<MuiThemeProvider>
       <div>
         <Header addTraining={this.addTrainingHandler}/>
-        <TrainingEditDialog open={this.state.openEditDialog} handleCancel={this.handleCancel} handleSubmit={this.handleSubmit}/>
+        <TrainingEditDialog
+        open={this.state.openEditDialog} handleCancel={this.handleCancel} handleSubmit={this.handleSubmit}
+        />
         <MainComponent />
       </div>
      </MuiThemeProvider>)
