@@ -14,12 +14,13 @@ class MainComponent extends React.Component {
     super();
     this.state = {trainings : trainings};
     this.deleteTraining = this.deleteTraining.bind(this);
+    this.editTraining = this.editTraining.bind(this);
   }
   render() {
     if(this.state.trainings.length != 0)
     return (
       <div>
-          <div><Trainings trainingList= {this.state.trainings} onDelete={this.deleteTraining}/></div>
+          <div><Trainings trainingList= {this.state.trainings} onDelete={this.deleteTraining} onEdit={this.editTraining}/></div>
       </div>
     );
     else
@@ -51,9 +52,13 @@ class MainComponent extends React.Component {
     });
   }
 
-  deleteTraining(id) {
-    console.log("delete " + id);
-    this.deleteTrainingApiCall(id);
+  deleteTraining(training) {
+    console.log("delete " + training);
+    this.deleteTrainingApiCall(training.id);
+  }
+
+  editTraining(training) {
+    console.log("edit training " + training);
   }
 
 }

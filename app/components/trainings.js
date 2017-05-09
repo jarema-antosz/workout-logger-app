@@ -19,7 +19,8 @@ export default class Trainings extends React.Component {
       <List>{this.props.trainingList.map( training =>
           <ListItem key={training.id}>
           Date: {training.date}<br /><Exercises exercises={training.exercises}/>
-          <RaisedButton label="Delete" onClick={this.props.onDelete.bind(null, training.id)} />
+          <RaisedButton label="Delete" onClick={this.props.onDelete.bind(null, training)} />
+          <RaisedButton label="Edit" onClick={this.props.onEdit.bind(null, training)} />
           </ListItem>
       )}
       </List>
@@ -30,5 +31,6 @@ export default class Trainings extends React.Component {
 
 Trainings.propTypes = {
   trainingList: React.PropTypes.array,
-  onDelete: React.PropTypes.func.isRequired
+  onDelete: React.PropTypes.func.isRequired,
+  onEdit: React.PropTypes.func.isRequired
 };

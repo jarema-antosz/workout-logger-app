@@ -15,7 +15,7 @@ export default class App extends React.Component {
   constructor() {
     super();
 
-    this.state = {openEditDialog: false};
+    this.state = {openEditDialog: false, editedTraining: { date: null, exercises: []}};
     this.addTrainingHandler = this.addTrainingHandler.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,7 +40,9 @@ export default class App extends React.Component {
       <div>
         <Header addTraining={this.addTrainingHandler}/>
         <TrainingEditDialog
-        open={this.state.openEditDialog} handleCancel={this.handleCancel} handleSubmit={this.handleSubmit}
+        open={this.state.openEditDialog}
+        editedTraining={this.state.editedTraining}
+        handleCancel={this.handleCancel} handleSubmit={this.handleSubmit}
         />
         <MainComponent />
       </div>
