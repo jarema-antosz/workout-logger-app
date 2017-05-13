@@ -8,6 +8,9 @@ import promise from 'es6-promise';
 import 'isomorphic-fetch';
 
 promise.polyfill();
+// Needed for onTouchTap
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 
 export default class App extends React.Component {
@@ -15,10 +18,12 @@ export default class App extends React.Component {
   constructor() {
     super();
 
-    this.state = {openEditDialog: false, editedTraining: { date: null, exercises: []}};
+    this.state = {openEditDialog: false, editedTraining: { date: null, exercises: []}, trainings: []};
     this.addTrainingHandler = this.addTrainingHandler.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteTraining = this.deleteTraining.bind(this);
+    this.deleteTrainingApiCall = this.deleteTrainingApiCall.bind(this);
   }
 
   addTrainingHandler() {
@@ -35,6 +40,33 @@ export default class App extends React.Component {
     this.setState({openEditDialog : false});
   }
 
+  componentDidMount() {
+    console.log("MainComponent mounted. Make ajax call");
+    this.fetchTrainingsApiCall();
+  }
+
+  fetchTrainingsApiCall() {
+    console.log("fetchTrainingsFromApi");
+    fetch("http://localhost:3000/trainings").then((resp) => resp.json())
+    .then((data) => {var trainings = data;this.setState({trainings : trainings})})
+    .catch(function(error) {
+      console.log(error);
+    });
+  }
+
+  deleteTrainingApiCall(id) {
+    fetch("http://localhost:3000/trainings/" + id, {
+      method: 'DELETE',
+    }).then(resonse => this.fetchTrainingsApiCall()).catch(function(error) {
+      console.log(error);
+    });
+  }
+
+  deleteTraining(training) {
+    console.log("delete " + training);
+    this.deleteTrainingApiCall(training.id);
+  }
+
   render() {
     return (<MuiThemeProvider>
       <div>
@@ -44,7 +76,7 @@ export default class App extends React.Component {
         editedTraining={this.state.editedTraining}
         handleCancel={this.handleCancel} handleSubmit={this.handleSubmit}
         />
-        <MainComponent />
+        <MainComponent trainings={this.state.trainings} deleteHandler={this.deleteTraining}/>
       </div>
      </MuiThemeProvider>)
   }
