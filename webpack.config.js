@@ -38,6 +38,7 @@ module.exports = {
       template: PATHS.page_template
     }),
     new webpack.HotModuleReplacementPlugin(), //auto refresh app in browser after file save but state is not loss, requires react-hmre
-    new CleanWebpackPlugin(PATHS.build)
+    new CleanWebpackPlugin(PATHS.build),
+    new webpack.optimize.UglifyJsPlugin({compress: {warnings:false}})
   ]
 };
