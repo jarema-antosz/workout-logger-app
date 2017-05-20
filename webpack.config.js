@@ -1,6 +1,8 @@
 const path = require('path');
 var webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
 
 
 const PATHS = {
@@ -35,6 +37,7 @@ module.exports = {
       title: 'Workout Logger App',// use <%= htmlWebpackPlugin.options.title %> to inject this in page template
       template: PATHS.page_template
     }),
-    new webpack.HotModuleReplacementPlugin() //auto refresh app in browser after file save but state is not loss, requires react-hmre
+    new webpack.HotModuleReplacementPlugin(), //auto refresh app in browser after file save but state is not loss, requires react-hmre
+    new CleanWebpackPlugin(PATHS.build)
   ]
 };
