@@ -29,7 +29,7 @@ module.exports = {
   },
     module: {
         loaders: [
-			       { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader" }
+			       { test: /\.jsx?$/, exclude: /node_modules/, loader: "react-hot-loader!babel-loader" }
 		  ]
     },
    plugins: [
@@ -38,7 +38,13 @@ module.exports = {
       template: PATHS.page_template
     }),
     new webpack.HotModuleReplacementPlugin(), //auto refresh app in browser after file save but state is not loss, requires react-hmre
+    new webpack.NamedModulesPlugin(), // prints more readable module names in the browser console on HMR updates
+    new webpack.NoErrorsPlugin(),
     new CleanWebpackPlugin(PATHS.build),
     new webpack.optimize.UglifyJsPlugin({ sourceMap: true, minimize: true, compress: true })
-  ]
+  ],
+  devServer: {
+    hot: true, //required to enable HMR
+    contentBase: './'
+  }
 };
