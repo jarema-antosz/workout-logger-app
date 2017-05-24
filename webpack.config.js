@@ -19,7 +19,7 @@ module.exports = {
   // Entries have to resolve to files! It relies on Node.js
   // convention by default so if a directory contains *index.js*,
   // it will resolve to that.
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   entry: {
     app: ["babel-polyfill", PATHS.app]
   },
@@ -39,6 +39,6 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(), //auto refresh app in browser after file save but state is not loss, requires react-hmre
     new CleanWebpackPlugin(PATHS.build),
-    new webpack.optimize.UglifyJsPlugin({compress: {warnings:false}})
+    new webpack.optimize.UglifyJsPlugin({ sourceMap: true, minimize: true, compress: true })
   ]
 };

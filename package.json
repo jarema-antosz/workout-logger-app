@@ -5,8 +5,8 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --env development",
-    "build": "webpack --env production",
+    "start": "webpack-dev-server",
+    "build": "webpack",
     "test": "echo \"test script\""
   },
   "keywords": [],
